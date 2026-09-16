@@ -7,7 +7,7 @@ jobs:
             - name: get code
               uses: actions/checkout@v7
             - name: Install Node JS
-              uses: actions/setup-nde@v7
+              uses: actions/setup-node@v7
               with:
                 node-version: 24
             - name: Install dependencies
