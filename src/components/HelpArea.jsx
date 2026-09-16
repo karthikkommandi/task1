@@ -24,9 +24,11 @@ function HelpArea() {
     <section data-testid="help-area" id="help-area">
       {HELP_ITEMS.map((item) => (
         <HelpBox key={item.id} title={item.title} text={item.text} />
+       
       ))}
     </section>
   );
+   //console.log('hello')
 }
 
 export default HelpArea;
