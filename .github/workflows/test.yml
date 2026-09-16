@@ -15,7 +15,7 @@ jobs:
             - name: Build dependencies
               run: npm run build
             - name: Run Lint
-              run: npn run lint
+              run: npm run lint
             - name: Run Test
               run: npn test
     deploy:
