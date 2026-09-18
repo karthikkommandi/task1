@@ -1,7 +1,7 @@
 name: Lint & Test and Deploy
 on: push
 jobs:
-    Lint:
+    test:
         runs-on: ubuntu-latest
         steps:
             - name: get code
@@ -18,19 +18,23 @@ jobs:
               run: npm run lint
             - name: Run Test
               run: npm test
-    deploy:
-        needs: Lint
+    build:
+        needs: test
         runs-on: ubuntu-latest
         steps:
              - name: Get Code
                uses: actions/checkout@v7
-             - name: Install Nde Js
-               uses: actions/setup-node@v7
-               with:
-                 node-version: 24
+             #- name: Install Node Js
+             #  uses: actions/setup-node@v7
+              # with:
+               #  node-version: 24
              - name: Install Dependencies
                run: npm ci
              - name: Build Project
                run: npm run build
+    deploy:
+        needs: build 
+        runs-on: ubuntu-latest
+        steps:
              - name: Deploy
                run: echo "Deploying....." 
