@@ -6,18 +6,12 @@ jobs:
         steps:
             - name: get code
               uses: actions/checkout@v7
-            - name: Install Node JS
-              uses: actions/setup-node@v7
-              with:
-                node-version: 24
             - name: Install dependencies
               run: npm ci
-            - name: Build dependencies
-              run: npm run build
-            - name: Run Lint
+            - name: Lint code ( check for vulnerabilities)
               run: npm run lint
-            - name: Run Test
-              run: npm test
+            - name: Test code
+              run: npm run test
     build:
         needs: test
         runs-on: ubuntu-latest
