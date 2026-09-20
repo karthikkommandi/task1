@@ -18,7 +18,7 @@ jobs:
               run: npm run test
             - name: Upload Test Report
               if: failure() && steps.run-tests.outcome == 'failure'
-              uses: action/upload-artifact@v4
+              uses: actions/upload-artifact@v4
               with:
                 name: test-report
                 path: test.json
