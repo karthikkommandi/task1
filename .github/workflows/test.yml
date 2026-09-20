@@ -16,7 +16,14 @@ jobs:
             - name: Lint code ( check for vulnerabilities)
               run: npm run lint
             - name: Test code
+              id: run-tests
               run: npm run test
+            - name: Upload Test Report
+              if: steps.run-tests.outcome == 'failure'
+              uses: action/upload-artifact@v4
+              with:
+                name: test-report
+                path: test.json
     build:
         needs: test
         runs-on: ubuntu-latest
